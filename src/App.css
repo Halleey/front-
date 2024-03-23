@@ -1,29 +1,36 @@
 .container {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    justify-content: center;
-    width: 100vw
-}
+    align-items: center;
+  }
   
-.card-grid {
+  .card-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-}
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
   
-.container button {
-    background-color: #0275d8;
-    color: white;
-    font-weight: bold;
-    position: fixed;
-    bottom: 16px;
-    right: 24px;
-    transition: all 0.1s linear 0.1s;
-}
+  .button-container {
+    display: flex;
+    justify-content: center; /* Centralizar os botões horizontalmente */
+    margin-top: 20px; /* Espaçamento superior para separar os botões da grade de cartões */
+  }
   
-.container button:hover {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 7px 0px;
-    transform: scale(1.1);
-}
+  button {
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 0 10px; /* Espaçamento horizontal entre os botões */
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #1a1a1a;
+    color: #fff;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #646cff;
+  }
   
