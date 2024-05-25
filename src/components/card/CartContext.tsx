@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-// Definindo o tipo para os itens do carrinho
+
 export interface CartItem {
   id: number;
   title: string;
@@ -9,7 +9,7 @@ export interface CartItem {
   quantity: number;
 }
 
-// Criando o contexto do carrinho
+
 interface CartContextProps {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
@@ -20,18 +20,18 @@ interface CartContextProps {
 const CartContext = createContext<CartContextProps | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Estado para os itens do carrinho
+  
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     const storedCart = localStorage.getItem('cartItems');
     return storedCart ? JSON.parse(storedCart) : [];
   });
 
-  // Atualiza o localStorage sempre que os itens do carrinho mudarem
+  
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // Adiciona um item ao carrinho
+  
   const addToCart = (item: CartItem) => {
     setCartItems(prevItems => {
       const existingItem = prevItems.find(prevItem => prevItem.id === item.id);
@@ -45,7 +45,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   };
 
-  // Remove um item do carrinho
+ 
   const removeFromCart = (itemId: number) => {
     setCartItems(prevItems =>
       prevItems.map(prevItem =>
@@ -54,7 +54,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
   };
 
-  // Limpa o carrinho
+  
   const clearCart = () => {
     setCartItems([]);
   };

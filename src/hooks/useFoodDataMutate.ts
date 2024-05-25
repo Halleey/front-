@@ -16,7 +16,7 @@ const postData = async (data: FoodData, token: string | null): AxiosPromise<any>
     return response;
 }
 
-// Hook personalizado para mutar dados de comida
+
 export function useFoodDataMutate(){
     const queryClient = useQueryClient();
     const { token } = useAuth(); 

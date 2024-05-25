@@ -27,12 +27,12 @@ function App() {
     setIsProductModalOpen(false);
     setIsUserModalOpen(false);
     setIsLoginModalOpen(false);
-    setIsCartModalOpen(false); // Feche o modal do carrinho
+    setIsCartModalOpen(false); 
   }
 
   const handleOpenCartModal = () => {
     console.log("click");
-    setIsCartModalOpen(true); // Abra o modal do carrinho
+    setIsCartModalOpen(true); 
   }
 
   return (
@@ -51,12 +51,12 @@ function App() {
           <button onClick={handleOpenProductModal}>Novo Produto</button>
           <button onClick={handleOpenUserModal}>Cadastrar Usuário</button>
           <button onClick={() => setIsLoginModalOpen(true)}>Login</button>
-          <button onClick={handleOpenCartModal}>Ver Carrinho</button> {/* Botão para abrir o modal do carrinho */}
+          <button onClick={handleOpenCartModal}>Ver Carrinho</button> {}
         </div>
         {isProductModalOpen && <CreateModal closeModal={handleCloseModal}/>}
         {isUserModalOpen && <CreateUserModal closeModal={handleCloseModal}/>}
         {isLoginModalOpen && <LoginModal closeModal={handleCloseModal}/>}
-        {isCartModalOpen && <CartModal closeModal={handleCloseModal}/>} {/* Renderize o modal do carrinho se isCartModalOpen for true */}
+        {isCartModalOpen && <CartModal closeModal={handleCloseModal}/>} {}
       </div>
     </CartProvider>
   );

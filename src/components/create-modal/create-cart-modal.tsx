@@ -1,15 +1,15 @@
 import React from 'react';
 import { useCart } from '../card/CartContext';
-import './cartmodal.css'; // Importe o arquivo CSS para estilização do modal
+import './cartmodal.css'; 
 
 interface CartModalProps {
-  closeModal: () => void; // Tipando explicitamente como uma função que não retorna nada
+  closeModal: () => void; 
 }
 
 function CartModal({ closeModal }: CartModalProps) {
   const { cartItems, removeFromCart } = useCart();
 
-  // Calculando o valor total dos produtos no carrinho
+ 
   const totalValue = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
   return (
@@ -39,7 +39,7 @@ function CartModal({ closeModal }: CartModalProps) {
             <p>Total: ${totalValue.toFixed(2)}</p>
           </>
         )}
-        <button onClick={closeModal}>Fechar</button> {/* Botão para fechar o modal */}
+        <button onClick={closeModal}>Fechar</button> {}
       </div>
     </div>
   );

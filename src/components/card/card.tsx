@@ -11,7 +11,7 @@ export function Card({ data }: CardProps) {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    // Verifica se 'id' está presente antes de adicionar ao carrinho
+    
     if (data.id !== undefined) {
       const { id, title, image, price } = data;
       addToCart({ id, title, image, price, quantity: 1 });
