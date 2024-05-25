@@ -11,12 +11,12 @@ interface InputProps {
     updateValue(value: any): void
 }   
 
-// Interface para as propriedades do modal
+
 interface ModalProps {
     closeModal(): void
 }
 
-// Componente funcional para um input
+
 const Input = ({ label, value, updateValue }: InputProps) => {
     return (
         <>
@@ -26,16 +26,15 @@ const Input = ({ label, value, updateValue }: InputProps) => {
     )
 }
 
-// Componente funcional para o modal de criação de item no cardápio
 export function CreateModal({ closeModal }: ModalProps){
-    // Estados para armazenar o título, preço e imagem do item
+    
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState("");
-    // Hook customizado para realizar a mutação dos dados do item
+   
     const { mutate, isSuccess, isLoading } = useFoodDataMutate();
 
-    // Função para enviar os dados do item para a mutação
+
     const submit = () => {
         const foodData: FoodData = {
             title, 

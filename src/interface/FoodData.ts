@@ -4,3 +4,6 @@ export interface FoodData {
     image: string,
     price: number
 }
+export interface CartItem extends FoodData {
+    quantity:number;
+}
