@@ -22,7 +22,7 @@ export function Card({ data }: CardProps) {
     <div className="card">
       <img src={data.image} alt={data.title} />
       <h2>{data.title}</h2>
-      <p className = "preco"><b>Price:</b> ${data.price.toFixed(2)}</p> 
+      <p className ="preco"><b>Price:</b> ${data.price.toFixed(2)}</p> 
       <button onClick={handleAddToCart}>Add to Cart</button>
     </div>
   );

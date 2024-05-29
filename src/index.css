@@ -5,7 +5,7 @@
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: rgb(19, 19, 19) ;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,14 +15,14 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #32567A;
   text-decoration: inherit;
 }
 
 body {
   margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,26 +32,40 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
   margin-top: 130px;
+
 }
 
 .container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  
+ 
   
  
 }
 
 .card-grid {
+ 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-gap: 16px; 
+  max-width: 100%; 
+  padding: 16px; 
+  box-sizing: border-box; 
+  max-height: 100%;
+  margin-top: 1150px;
+  
+     
 }
 
 .button-container {
   display: flex;
   flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha quando não houver espaço */
   justify-content: center; /* Centraliza os botões horizontalmente */
+  align-items: center;
+  margin-bottom: 650px;
 }
 
 button {
@@ -70,7 +84,9 @@ button {
 
 button:hover {
   
-  background: linear-gradient(90deg, #32567A 0%, #1D4670 38.5%, #1A2F44 100%);
+
+  
+  background-color: #32567A;
 
   box-shadow: 0px 10px 40px 5px rgba(29, 70, 112, 0.35);
   
@@ -104,4 +120,7 @@ button:focus-visible {
   right: 0;
   z-index: 999; /* Garante que os botões fiquem sempre no topo */
   padding: 10px; /* Espaçamento interno para os botões */
+
+
 }
+
