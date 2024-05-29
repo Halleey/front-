@@ -37,6 +37,12 @@ function App() {
 
   return (
     <CartProvider>
+       <div className="button-container">
+          <button onClick={handleOpenProductModal}>Novo Produto</button>
+          <button onClick={handleOpenUserModal}>Cadastrar Usuário</button>
+          <button onClick={() => setIsLoginModalOpen(true)}>Login</button>
+          <button onClick={handleOpenCartModal}>Ver Carrinho</button> {}
+        </div>
       <div className="container">
         <h1>Cardápio</h1>
         <div className="card-grid">
@@ -46,12 +52,6 @@ function App() {
               data={foodData}
             />
           )}
-        </div>
-        <div className="button-container">
-          <button onClick={handleOpenProductModal}>Novo Produto</button>
-          <button onClick={handleOpenUserModal}>Cadastrar Usuário</button>
-          <button onClick={() => setIsLoginModalOpen(true)}>Login</button>
-          <button onClick={handleOpenCartModal}>Ver Carrinho</button> {}
         </div>
         {isProductModalOpen && <CreateModal closeModal={handleCloseModal}/>}
         {isUserModalOpen && <CreateUserModal closeModal={handleCloseModal}/>}

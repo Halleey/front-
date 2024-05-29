@@ -37,7 +37,7 @@ function CartModal({ closeModal }: CartModalProps) {
               ))}
             </ul>
             <p>Total: ${totalValue.toFixed(2)}</p>
-          </>
+          </> 
         )}
         <button onClick={closeModal}>Fechar</button> {}
       </div>

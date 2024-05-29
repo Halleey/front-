@@ -13,7 +13,7 @@
   .button-container {
     display: flex;
     justify-content: center; /* Centralizar os botões horizontalmente */
-    margin-top: 20px; /* Espaçamento superior para separar os botões da grade de cartões */
+    margin-top: 20px; 
   }
   
   button {
