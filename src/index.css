@@ -22,7 +22,7 @@ a {
 body {
   margin: 0;
   display: flex;
-  flex-direction: column; /* Coloca os botões no topo */
+  flex-direction: column;
   align-items: center;
 }
 
@@ -46,7 +46,7 @@ h1 {
   max-width: 100%;
   padding: 16px;
   box-sizing: border-box;
-  margin-top: 50px; /* Reduz a margem superior */
+  margin-top: 50px;
 }
 
 .button-container {
@@ -54,12 +54,11 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  position: sticky; /* Fixa os botões no topo */
-  top: 0; /* Define a posição no topo */
   background-color: rgb(19, 19, 19); /* Cor de fundo para os botões */
-  z-index: 999; /* Garante que os botões fiquem sobrepostos */
   padding: 10px;
   width: 100%; /* Faz os botões ocuparem toda a largura */
+  box-sizing: border-box;
+  position: relative; /* Posicionamento padrão para manter os botões no topo */
 }
 
 button {
@@ -90,7 +89,6 @@ button:focus-visible {
   margin-top: 10px;
 }
 
-/* Novos estilos para os cards */
 .card {
   display: flex;
   flex-direction: column;
@@ -113,7 +111,6 @@ button:focus-visible {
   color: aliceblue;
 }
 
-/* Media Queries para responsividade */
 @media (max-width: 1200px) {
   .card-grid {
     grid-template-columns: repeat(3, 1fr);
