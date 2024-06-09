@@ -48,13 +48,12 @@ function CartModal({ closeModal }: CartModalProps) {
     }
   };
 
-  const handleRemoveItem = (itemId: string) => {
-    removeFromCart(Number(itemId)); // Converter itemId para número
+  const handleRemoveItem = (itemId: number) => {
+    removeFromCart(itemId);
     if (currentIndex === cartItems.length - 1 && currentIndex !== 0) {
       setCurrentIndex(currentIndex - 1);
     }
   };
-  
 
   return (
     <div className="modal-overlay">
@@ -93,4 +92,4 @@ function CartModal({ closeModal }: CartModalProps) {
   );
 }
 
-export default CartModal
+export default CartModal;

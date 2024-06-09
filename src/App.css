@@ -15,6 +15,7 @@
     display: flex;
     justify-content: center; /* Centralizar os botões horizontalmente */
     margin-top: 20px; 
+    top: 0;
   }
   
   button {
