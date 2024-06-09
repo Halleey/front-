@@ -30,11 +30,12 @@ function App() {
     setIsCartModalOpen(false); 
   }
 
+  
   const handleOpenCartModal = () => {
     console.log("click");
     setIsCartModalOpen(true); 
   }
-
+  
   return (
     <CartProvider>
       <div className="container">

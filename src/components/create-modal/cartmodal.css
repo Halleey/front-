@@ -66,4 +66,27 @@
   
   button:hover {
     background-color: #32567A;;
+  }/* Responsividade */
+@media (max-width: 768px) {
+  .modal-body {
+    max-width: 90%;
   }
+
+  .cart-item {
+    flex-direction: column; /* Altera para layout de coluna */
+    align-items: flex-start; /* Alinha itens à esquerda */
+    padding: 20px 0; /* Adiciona espaçamento superior e inferior */
+    border-bottom: none; /* Remove a borda inferior */
+  }
+
+  .cart-item-image {
+    width: 40%; /* Ocupa toda a largura disponível */
+    margin-right: 0; /* Remove a margem à direita */
+    margin-bottom: 0px; /* Adiciona espaçamento inferior */
+  }
+
+  .cart-item-details {
+    width: 100%; /* Ocupa toda a largura disponível */
+    margin-left: 0; /* Remove a margem à esquerda */
+  }
+}

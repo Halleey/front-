@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useFoodDataMutate } from '../../hooks/useFoodDataMutate';
 import { FoodData } from '../../interface/FoodData';
-
 import "./modal.css";
-
-// Interface para as propriedades de um input
 interface InputProps {
     label: string,
     value: string | number,

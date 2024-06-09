@@ -5,7 +5,7 @@ import App from './App'
 import './index.css'
 
 const queryClient = new QueryClient();
-
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
