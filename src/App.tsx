@@ -4,7 +4,7 @@ import { Card } from './components/card/card';
 import { useFoodData } from './hooks/useFoodData';
 import { CreateModal } from './components/create-modal/create-modal';
 import { CreateUserModal } from './components/create-modal/create-user-modal';
-import { CreateAddressModal } from './components/create-modal/create-address-modal'; // Importar o novo modal
+import { CreateAddressModal } from './components/create-modal/create-address-modal';
 import { LoginModal } from './components/create-modal/create-login-modal';
 import { CartProvider } from './components/card/CartContext';
 import CartModal from './components/create-modal/create-cart-modal';
@@ -17,6 +17,7 @@ function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const [hasAddressPermission, setHasAddressPermission] = useState(false);
+  const [hasProductPermission, setHasProductPermission] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -25,6 +26,7 @@ function App() {
       const role = payload.role;
       if (role === 'ADMIN') {
         setHasAddressPermission(true);
+        setHasProductPermission(true);
       }
     }
   }, []);
@@ -56,7 +58,7 @@ function App() {
   return (
     <CartProvider>
       <div className="button-container">
-        <button onClick={handleOpenProductModal}>Novo Produto</button>
+        {hasProductPermission && <button onClick={handleOpenProductModal}>Novo Produto</button>}
         <button onClick={handleOpenUserModal}>Cadastrar Usuário</button>
         {hasAddressPermission && <button onClick={handleOpenAddressModal}>Novo Endereço</button>}
         <button onClick={() => setIsLoginModalOpen(true)}>Login</button>
