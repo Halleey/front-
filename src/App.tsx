@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Card } from './components/card/card';
 import { useFoodData } from './hooks/useFoodData';
@@ -16,6 +16,18 @@ function App() {
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false); 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  const [hasAddressPermission, setHasAddressPermission] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const role = payload.role;
+      if (role === 'ADMIN') {
+        setHasAddressPermission(true);
+      }
+    }
+  }, []);
 
   const handleOpenProductModal = () => {
     setIsProductModalOpen(true);
@@ -46,7 +58,7 @@ function App() {
       <div className="button-container">
         <button onClick={handleOpenProductModal}>Novo Produto</button>
         <button onClick={handleOpenUserModal}>Cadastrar Usuário</button>
-        <button onClick={handleOpenAddressModal}>Novo Endereço</button> {}
+        {hasAddressPermission && <button onClick={handleOpenAddressModal}>Novo Endereço</button>}
         <button onClick={() => setIsLoginModalOpen(true)}>Login</button>
         <button onClick={handleOpenCartModal}>Ver Carrinho</button>
       </div>
@@ -61,7 +73,7 @@ function App() {
         </div>
         {isProductModalOpen && <CreateModal closeModal={handleCloseModal} />}
         {isUserModalOpen && <CreateUserModal closeModal={handleCloseModal} />}
-        {isAddressModalOpen && <CreateAddressModal closeModal={handleCloseModal} />} {}
+        {isAddressModalOpen && <CreateAddressModal closeModal={handleCloseModal} />}
         {isLoginModalOpen && <LoginModal closeModal={handleCloseModal} />}
         {isCartModalOpen && <CartModal closeModal={handleCloseModal} />}
       </div>

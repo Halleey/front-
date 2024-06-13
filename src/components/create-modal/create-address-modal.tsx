@@ -29,7 +29,7 @@ export function CreateAddressModal({ closeModal }: ModalProps) {
         const token = localStorage.getItem('token');
         if (token) {
             const payload = JSON.parse(atob(token.split('.')[1]));
-            setUserId(payload.userId); // Defina o userId no estado
+            setUserId(payload.userId); 
         }
     }, []);
 
@@ -45,7 +45,7 @@ export function CreateAddressModal({ closeModal }: ModalProps) {
             address,
             number,
         };
-        saveAddress(addressData, userId); // Certifique-se de passar userId
+        saveAddress(addressData, userId); 
         console.log(addressData)
         closeModal();
     };

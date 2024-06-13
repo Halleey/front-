@@ -68,6 +68,7 @@ export function LoginModal({ closeModal }: ModalProps){
         try {
             await login({ name, password }); 
             closeModal(); 
+
         } catch (error) {
         
             console.error('Erro ao fazer login:', error);
