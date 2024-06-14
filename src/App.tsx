@@ -8,16 +8,19 @@ import { CreateAddressModal } from './components/create-modal/create-address-mod
 import { LoginModal } from './components/create-modal/create-login-modal';
 import { CartProvider } from './components/card/CartContext';
 import CartModal from './components/create-modal/create-cart-modal';
+import { useQueryClient } from '@tanstack/react-query';
 
 function App() {
   const { data } = useFoodData();
+  const queryClient = useQueryClient();
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
-  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false); 
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const [hasAddressPermission, setHasAddressPermission] = useState(false);
   const [hasProductPermission, setHasProductPermission] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -28,41 +31,39 @@ function App() {
         setHasAddressPermission(true);
         setHasProductPermission(true);
       }
+      setIsAuthenticated(true);
     }
   }, []);
 
-  const handleOpenProductModal = () => {
-    setIsProductModalOpen(true);
-  }
-
-  const handleOpenUserModal = () => {
-    setIsUserModalOpen(true);
-  }
-
-  const handleOpenAddressModal = () => {
-    setIsAddressModalOpen(true);
-  }
-
+  const handleOpenProductModal = () => setIsProductModalOpen(true);
+  const handleOpenUserModal = () => setIsUserModalOpen(true);
+  const handleOpenAddressModal = () => setIsAddressModalOpen(true);
+  const handleOpenCartModal = () => setIsCartModalOpen(true);
   const handleCloseModal = () => {
     setIsProductModalOpen(false);
     setIsUserModalOpen(false);
-    setIsAddressModalOpen(false); 
+    setIsAddressModalOpen(false);
     setIsLoginModalOpen(false);
     setIsCartModalOpen(false);
   }
 
-  const handleOpenCartModal = () => {
-    setIsCartModalOpen(true);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    queryClient.clear();
+    setIsAuthenticated(false);
+    window.location.reload();
   }
 
   return (
     <CartProvider>
       <div className="button-container">
-        {hasProductPermission && <button onClick={handleOpenProductModal}>Novo Produto</button>}
-        <button onClick={handleOpenUserModal}>Cadastrar Usuário</button>
-        {hasAddressPermission && <button onClick={handleOpenAddressModal}>Novo Endereço</button>}
-        <button onClick={() => setIsLoginModalOpen(true)}>Login</button>
+        {isAuthenticated && hasProductPermission && <button onClick={handleOpenProductModal}>Novo Produto</button>}
+        {!isAuthenticated && <button onClick={handleOpenUserModal}>Cadastrar Usuário</button>}
+        {isAuthenticated && hasAddressPermission && <button onClick={handleOpenAddressModal}>Novo Endereço</button>}
+        {!isAuthenticated && <button onClick={() => setIsLoginModalOpen(true)}>Login</button>}
         <button onClick={handleOpenCartModal}>Ver Carrinho</button>
+        {isAuthenticated && <button onClick={handleLogout}>Sair</button>}
       </div>
       <div className="container">
         <div className="card-grid">
