@@ -9,6 +9,7 @@ import { LoginModal } from './components/create-modal/create-login-modal';
 import { CartProvider } from './components/card/CartContext';
 import CartModal from './components/create-modal/create-cart-modal';
 import { useQueryClient } from '@tanstack/react-query';
+import { json } from 'react-router-dom';
 
 function App() {
   const { data } = useFoodData();
@@ -34,7 +35,17 @@ function App() {
       setIsAuthenticated(true);
     }
   }, []);
-
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if(token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const role = payload.role;
+      if(role === 'CLIENTE') {
+        setHasAddressPermission(true);
+      }
+      setIsAuthenticated(true);
+    }
+  })
   const handleOpenProductModal = () => setIsProductModalOpen(true);
   const handleOpenUserModal = () => setIsUserModalOpen(true);
   const handleOpenAddressModal = () => setIsAddressModalOpen(true);
@@ -59,7 +70,7 @@ function App() {
     <CartProvider>
       <div className="button-container">
         {isAuthenticated && hasProductPermission && <button onClick={handleOpenProductModal}>Novo Produto</button>}
-        {!isAuthenticated && <button onClick={handleOpenUserModal}>Cadastrar Usuário</button>}
+        {!isAuthenticated && <button onClick={handleOpenUserModal}>Cadastre-se</button>}
         {isAuthenticated && hasAddressPermission && <button onClick={handleOpenAddressModal}>Novo Endereço</button>}
         {!isAuthenticated && <button onClick={() => setIsLoginModalOpen(true)}>Login</button>}
         <button onClick={handleOpenCartModal}>Ver Carrinho</button>

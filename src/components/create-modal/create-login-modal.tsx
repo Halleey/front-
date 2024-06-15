@@ -17,6 +17,7 @@ export function useLogin() {
             const token: string = data?.token; 
             localStorage.setItem('token', token); 
             queryClient.invalidateQueries(['user-data']);
+            
         }
     });
 
@@ -84,7 +85,7 @@ export function LoginModal({ closeModal }: ModalProps){
     return(
         <div className="modal-overlay">
             <div className="modal-body">
-                <h2>Faça login</h2>
+                <h2>Login</h2>
                 <form className="input-container">
                     {/* Componentes Input para o nome (name) e senha */}
                     <Input label="Name" value={name} updateValue={setName}/>

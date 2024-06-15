@@ -53,7 +53,7 @@ export function CreateUserModal({ closeModal }: ModalProps){
     return(
         <div className="modal-overlay">
             <div className="modal-body">
-                <h2>Cadastre um novo usuário</h2>
+                <h2>Cadastre-se</h2>
                 <form className="input-container">
                     {}
                     <Input label="Nome" value={name} updateValue={setName}/>
